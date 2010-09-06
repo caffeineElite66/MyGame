@@ -1,0 +1,92 @@
+/*
+This file contain all css that has to do with 
+two of the main html pages. 
+*/
+
+body {
+    text-align: center;
+}
+
+#content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+    text-align: center;
+}
+
+#ttt-board {
+    height: 600px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ttt-board td {
+    height: 32%;
+    width: 32%;
+    font-size: 4em;
+    text-align: center;
+}
+
+#slot1 {
+    border-top: none;
+    border-left: none;
+    border-right: solid;
+    border-bottom: solid;
+}
+
+#slot2 {
+    border-top: none;
+    border-left: solid;
+    border-right: solid;
+    border-bottom: solid;
+}
+
+#slot3 {
+    border-top: none;
+    border-left: solid;
+    border-right: none;
+    border-bottom: solid;
+}
+
+#slot4 {
+    border-top: solid;
+    border-left: none;
+    border-right: solid;
+    border-bottom: solid;
+}
+
+#slot5 {
+    border-top: solid;
+    border-left: solid;
+    border-right: solid;
+    border-bottom: solid;
+}
+
+#slot6 {
+    border-top: solid;
+    border-left: solid;
+    border-right: none;
+    border-bottom: solid;
+}
+
+#slot7 {
+    border-top: solid;
+    border-left: none;
+    border-right: solid;
+    border-bottom: none;
+}
+
+#slot8 {
+    border-top: solid;
+    border-left: solid;
+    border-right: solid;
+    border-bottom: none;
+}
+
+#slot9 {
+    border-top: solid;
+    border-left: solid;
+    border-right: none;
+    border-bottom: none;
+}
