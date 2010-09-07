@@ -4,7 +4,7 @@ package com.kl.tictactoe
  * This is a quick prototype of my level 'HARD'
  * algorithm. It's not part of the game, but if you 
  * wish to see it you can access it via 
- * ./TicTacToe/AITest
+ * ../AITest/index
  */
 class AITestController {
     def winningMetrix = [

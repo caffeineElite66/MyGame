@@ -90,3 +90,11 @@ body {
     border-right: none;
     border-bottom: none;
 }
+
+#progressbar {
+    width: 100px;
+    height: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(./images/progress.gif);
+}

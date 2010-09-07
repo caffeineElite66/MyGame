@@ -1,0 +1,129 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>README</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Overview</h2>
+        <p>
+            This app is written with Groovy on Grails. The front-end is power by jQuery-UI.
+            Groovy is a loosely typed language that leverage the jvm. Grails is a groovy web framework
+            that uses MVC pattern. jQuery-UI is a quick and lightweight javascript framework for
+            designing UI.
+        </p>
+        <p>
+            This app does not use any database for maintain state. It uses session to
+            store everything.
+        </p>
+
+        <h3>Design Pattern</h3>
+        Besides the Grails framework is using MVC, i try to design the supporting
+        domain objects as an Composition style pattern. The idea is to keep the business
+        objects (AI, Game, Player...etc) away from the framework code. This way we are not
+        tie to Grails. All business object can be extended and decorate with more detail
+        implementation if needed. The Game object will be a composition of many smaller objects.
+
+        <h3>AI Algorithm</h3>
+        <p>
+            There are two algorithms used in this app. The <b>Random Strategy</b> and <b>Corner Strategy</b>.
+            The <b>Random Strategy</b> AI make a move randomly if it's not taken.
+            <br/><br/>
+            The <b>corner Strategy</b>
+            AI is something that I made up base on me losing at TicTacToe all the time. For the <b>Corner Strategy</b>
+            the worst possible outcome for AI is a tie. You should not be able to beat it. If you can beat it you are either using
+            the easy level, or I will buy every one in reddit some beer.
+        </p>
+        <p>
+        <h4>It's as follow</h4>
+        AI go first. <br/>
+        Check for winning move for AI, take it if possible.<br/>
+        Check for winning move for human, take it if possible.<br/>
+        Check for a corner with no surround pieces around it, take it if possible, if not take any corner.<br/>
+        Take a edge. <br/><br/>
+        Human go first. <br/>
+        If human take corner, AI take middle else use above algorithm.
+    </p>
+    <p>
+        I'm will aware that there are more conventional algorithms. I remember learning
+        MinMax algorithm from school. I feel that my algorithm is much easier to follow
+        and understand.
+    </p>
+    <p>
+        The point to take away is that if you want to implement another strategy, all you
+        have to do is to extend the <b>BaseAI</b> class.
+    </p>
+
+    <h3>Flow of The Game</h3>
+    The flow is pretty simple. User select options for the game. We pass our responsibility
+    to the <b>Process</b> Controller. Each time the <b>Process</b> controller check for winner
+    or tie in the game. Then it prompt the player for next move.
+
+    <br/>
+    <img src="./images/TicTacToe.png"/>
+    <br/>
+
+    <h2>Front End</h2>
+    <p>
+        <b>__PROJECT_ROOT__/grails-app/views/game/options.gsp</b><br/>
+        This gsp file contain the front-end code for human to select options for the game
+    </p>
+    <p>
+        <b>__PROJECT_ROOT__/grails-app/views/game/process.gsp</b><br/>
+        This gsp file contain front-end code for displaying the game data such as
+        game board, player moves....etc.
+    </p>
+    <h2>Back End</h2>
+    <p>
+        <b>__PROJECT_RROT__/src/groovy/com/kl/tictactoe/Game.groovy</b><br/>
+        This is the main Game Object which contain all the logic for game operation
+        and creation of supporting objects.
+    </p>
+    <p>
+        <b>__PROJECT_RROT__/src/groovy/com/kl/tictactoe/Node.groovy</b><br/>
+        This class define what is in a Node (slot in a board). I understand that
+        I can easily use a HashMap to represent the The board and it's nodes, but
+        for extendability I want to use a object to represent it. In the future, if
+        we decided to implement MinMax strategy, we can extend this Node object to give
+        it a goodness value.
+    </p>
+    <p>
+        <b>__PROJECT_RROT__/src/groovy/com/kl/tictactoe/Player.groovy</b><br/>
+        This is the base object for defining a player. Each player will have a
+        value. Human will have a value of 3 and AI will have a value of 8. The reason
+        why I use these value is so I can use math to do some simple condition checking.
+        You can refer to the class document for more details.
+    </p>
+    <p>
+        <b>__PROJECT_ROOT__/src/groovy/com/kl/tictactoe/ai/BaseAI.groovy</b><br/>
+        This is the base class for the AI. This is the plugin point of the AI strategy.
+    </p>
+    <p>
+        <b>__PROJECT_ROOT__/src/groovy/com/kl/tictactoe/ai/CornerStrategyAI.groovy</b><br/>
+        This contain all operation logic of this AI.
+    </p>
+    <p>
+        <b>__PROJECT_ROOT__/src/groovy/com/kl/tictactoe/ai/RandomStrategyAI.groovy</b><br/>
+        This contain all operation logic of this AI.
+    </p>
+    <p>
+        <b>__PROJECT_ROOT__/grails-app/controllers/com/kl/tictactoe/AITestController.groovy</b><br/>
+        This is a prototype I use for a prove of concept for the CornerStrategyAI. You can still access
+        this by going to ../MyGame/AITest/index
+    </p>
+    <p>
+        <b>__PROJECT_ROOT__/grails-app/controllers/com/kl/tictactoe/UITestController.groovy</b><br/>
+        This is a prototype I use for a prove of concept for the UI. you can still access this
+        by going to ../MyGame/UITest/index
+    </p>
+    <p>
+        <b>__PROJECT_ROOT__/grails-app/controllers/com/kl/tictactoe/GameConroller.groovy</b><br/>
+        This is the only framework code I have for this app. It's the main controller that delegate
+        responsibility to each of the business code.
+    </p>
+</body>
+</html>

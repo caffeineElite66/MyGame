@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  This is a prototype for the UI. Need to test some classes with the
+  jquery ui packages.
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
